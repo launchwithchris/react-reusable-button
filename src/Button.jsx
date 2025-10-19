@@ -1,7 +1,10 @@
-export default function Button() {
- // Todo: Build this component!
+export default function Button({children, Icon, mode = 'filled', ...props}) {
+    
+ let classes = 'button ';
  
- // !!! Important: 
- // Wrap the icon with a <span className="button-icon"> to achieve the target look
- // Also wrap the children prop with a <span>
+ classes = mode.length > 0 ? mode + '-button' : classes;
+ 
+ classes = Icon ? classes + ' ' + 'icon-button' : classes;
+ 
+ return <button className={classes} {...props}>{Icon && (<span className="button-icon"><Icon /></span>)}<span>{children}</span></button>;
 }
